@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Secure Chat</title>
+  <style>
+    [hidden] { display: none !important; }
+    body { font-family: system-ui, sans-serif; margin: 0; height: 100vh; background: #111; color: #eee; }
+    input, button { font: inherit; padding: 8px 10px; border-radius: 6px; border: 1px solid #444; background: #222; color: #eee; }
+    button { cursor: pointer; }
+    #auth { max-width: 280px; margin: 20vh auto; display: flex; flex-direction: column; gap: 8px; }
+    #err { color: #f87171; min-height: 1.2em; margin: 0; }
+    #app { display: flex; height: 100vh; }
+    aside { width: 240px; border-right: 1px solid #333; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+    #chats { list-style: none; padding: 0; margin: 0; flex: 1; overflow-y: auto; }
+    #chats li { padding: 8px; border-radius: 6px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    #chats li:hover, #chats li.active { background: #222; }
+    main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+    #msgs { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+    .msg { max-width: 75%; padding: 8px 12px; border-radius: 10px; white-space: pre-wrap; word-wrap: break-word; }
+    .user { align-self: flex-end; background: #2563eb; }
+    .ai { align-self: flex-start; background: #262626; }
+    #form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid #333; }
+    #input { flex: 1; }
+  </style>
+</head>
+<body>
+  <div id="auth">
+    <h2>Secure Chat</h2>
+    <input id="email" type="email" placeholder="email">
+    <input id="password" type="password" placeholder="password (8+ chars)">
+    <button id="signin">Sign in</button>
+    <button id="signup">Sign up</button>
+    <p id="err"></p>
+  </div>
+
+  <div id="app" hidden>
+    <aside>
+      <button id="new">+ New chat</button>
+      <ul id="chats"></ul>
+      <button id="logout">Log out</button>
+    </aside>
+    <main>
+      <div id="msgs"></div>
+      <form id="form">
+        <input id="input" autocomplete="off" placeholder="Message...">
+        <button>Send</button>
+      </form>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
